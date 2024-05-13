@@ -4,8 +4,12 @@ info:
   version: 1.0.0
 
 paths:
-  "/company/{id}":
+  /company/{id}:
     get:
+      summary: Get company by ID
+      operationId: getCompany
+      tags:
+        - company
       description: Retrieves detailed information about a specific company by its ID.
       parameters:
         - name: id
