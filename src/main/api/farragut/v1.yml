@@ -4,6 +4,24 @@ info:
   version: 1.0.0
 
 paths:
+  /company:
+    get:
+      x-spring-paginated: true
+      summary: Get all companies
+      operationId: getCompanies
+      tags:
+        - company
+      description: Retrieves a list of all companies.
+      responses:
+        200:
+          description: A list of companies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Company"
+
   /company/{id}:
     get:
       summary: Get company by ID
