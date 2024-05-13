@@ -56,4 +56,4 @@ components:
         title:
           type: string
           description: 'The company name.'
-          example: 'Company N'
+          example: 'Company A'
