@@ -6,12 +6,18 @@ info:
 paths:
   /company:
     get:
-      x-spring-paginated: true
+#      x-spring-paginated: true
       summary: Get all companies
       operationId: getCompanies
       tags:
         - company
       description: Retrieves a paginated list of all companies.
+      parameters:
+        - in: query
+          name: pageable
+          required: false
+          schema:
+            $ref: '#/components/schemas/Pageable'
       responses:
         200:
           description: A page of companies
@@ -60,11 +66,30 @@ components:
           description: 'The year the company was organized.'
           example: 2021
 
-    Page:
-      description: minimal Page object
+    Pageable:
+      description: Minimal page object
       type: object
       properties:
         page:
           type: integer
         size:
           type: integer
+
+    Page:
+      description: Minimal page object
+      type: object
+      properties:
+        page:
+          type: integer
+        size:
+          type: integer
+        totalPages:
+          type: integer
+        totalCount:
+          type: integer
+          format: int64
+        values:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/Company'
