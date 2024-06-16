@@ -4,6 +4,27 @@ info:
   version: 1.0.0
 
 paths:
+  /camp/{id}:
+    get:
+      summary: Get camp by ID
+      operationId: getCamp
+      tags:
+        - camp
+      description: Retrieves information about a specific camp.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: The camp requested
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Camp"
+
   /company:
     get:
       #      x-spring-paginated: true
@@ -32,7 +53,7 @@ paths:
       operationId: getCompany
       tags:
         - company
-      description: Retrieves detailed information about a specific company by its ID.
+      description: Retrieves information about a specific company.
       parameters:
         - name: id
           in: path
@@ -46,6 +67,52 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Company"
+
+  /company/{id}/persons:
+    get:
+      summary: Get company by ID
+      operationId: getCompanyPersons
+      tags:
+        - company
+        - person
+      description: Retrieves the list of persons for a specific company.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+
+  /person/{id}:
+    get:
+      summary: Get person by ID
+      operationId: getPerson
+      tags:
+        - person
+      description: Retrieves information about a specific person.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: The company requested
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+
 
 components:
   schemas:
