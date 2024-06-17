@@ -9,7 +9,7 @@ servers:
     description: Production server
 
 paths:
-  /camp:
+  /api/camp:
     get:
       #      x-spring-paginated: true
       summary: Get all camps
@@ -31,7 +31,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Page'
 
-  /camp/{id}:
+  /api/camp/{id}:
     get:
       summary: Get camp by ID
       operationId: getCamp
@@ -52,7 +52,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Camp"
 
-  /company:
+  /api/company:
     get:
       #      x-spring-paginated: true
       summary: Get all companies
@@ -74,7 +74,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Page'
 
-  /company/{id}:
+  /api/company/{id}:
     get:
       summary: Get company by ID
       operationId: getCompany
@@ -95,7 +95,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Company"
 
-  /company/{id}/persons:
+  /api/company/{id}/persons:
     get:
       summary: Get company by ID
       operationId: getCompanyPersons
@@ -119,7 +119,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Person'
 
-  /person/{id}:
+  /api/person/{id}:
     get:
       summary: Get person by ID
       operationId: getPerson
