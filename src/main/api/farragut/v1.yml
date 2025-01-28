@@ -97,7 +97,7 @@ paths:
 
   /api/company/{id}/persons:
     get:
-      summary: Get company by ID
+      summary: Get company persons by ID
       operationId: getCompanyPersons
       tags:
         - company
