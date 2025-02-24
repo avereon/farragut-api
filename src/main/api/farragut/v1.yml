@@ -140,6 +140,35 @@ paths:
               schema:
                 $ref: "#/components/schemas/Company"
 
+  /api/oauth/login:
+    post:
+      summary: Login a user
+      operationId: login
+      tags:
+        - authentication
+      description: Pass user credentials in the request payload to authenticate a 
+        user. If authenticated this will return signed JWT that the user can use
+        for subsequent calls.
+      responses:
+        200:
+          description: The signed JWT
+
+  /api/oauth/logout:
+    post:
+      summary: Logout a user
+      operationId: logout
+      tags:
+        - authentication
+      description: Logout the authenticated user.
+      responses:
+        200:
+          description: This endpoint will always return 200, regardless.
+
+#  grant_type=password
+#  &username=user@example.com
+#  &password=1234luggage
+#  &client_id=xxxxxxxxxx
+#  &client_secret=xxxxxxxxxx
 
 components:
   schemas:
