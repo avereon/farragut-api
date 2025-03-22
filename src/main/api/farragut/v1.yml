@@ -134,11 +134,11 @@ paths:
             type: string
       responses:
         200:
-          description: The company requested
+          description: The person requested
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Company"
+                $ref: "#/components/schemas/Person"
 
   /api/auth/login:
     post:
