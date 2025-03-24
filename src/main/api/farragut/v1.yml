@@ -3,12 +3,48 @@ info:
   title: Farragut Web Application API
   version: 1.0.0
 servers:
-  - url: /api
+  - url: /
     description: Local server
-  - url: https://farragut.avereon.com/api
+  - url: https://farragut.avereon.com/
     description: Production server
 
 paths:
+  /api/auth/login:
+    post:
+      summary: Login a user
+      operationId: login
+      tags:
+        - auth
+      description: Pass user credentials in the request payload to authenticate a
+        user. If authenticated this will return signed JWT that the user can use
+        for subsequent calls.
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+              example: username=user@example.com&password=1234luggage
+      responses:
+        200:
+          description: The signed JWT
+          content:
+            text/plain:
+              schema:
+                type: string
+                format: jwt
+                example: xxxxx.yyyyy.zzzzz
+
+  /api/auth/logout:
+    post:
+      summary: Logout a user
+      operationId: logout
+      tags:
+        - auth
+      description: Logout the authenticated user.
+      responses:
+        200:
+          description: This endpoint will always return 200, regardless.
+
   /api/camp:
     get:
       #      x-spring-paginated: true
@@ -139,42 +175,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Person"
-
-  /api/auth/login:
-    post:
-      summary: Login a user
-      operationId: login
-      tags:
-        - auth
-      description: Pass user credentials in the request payload to authenticate a 
-        user. If authenticated this will return signed JWT that the user can use
-        for subsequent calls.
-      requestBody:
-        content:
-          text/plain:
-            schema:
-              type: string
-              example: username=user@example.com&password=1234luggage
-      responses:
-        200:
-          description: The signed JWT
-          content:
-            text/plain:
-              schema:
-                type: string
-                format: jwt
-                example: xxxxx.yyyyy.zzzzz
-
-  /api/auth/logout:
-    post:
-      summary: Logout a user
-      operationId: logout
-      tags:
-        - auth
-      description: Logout the authenticated user.
-      responses:
-        200:
-          description: This endpoint will always return 200, regardless.
 
 components:
   schemas:
